@@ -6,30 +6,40 @@ picoVoice(피코펄스 보이스) 온디바이스 STT용 모델 배포 저장소
 
 ## 배포 모델
 
-### `ggml-large-v3-turbo-ko-zeroth-q5_0.bin` (릴리스 `v1`)
+### picoV-KO — `ggml-large-v3-turbo-ko-picoV-q5_0.bin` (릴리스 `v2`)
 
-한국어 음성인식 모델. Whisper large-v3-turbo 기반 한국어 파인튜닝(Zeroth-KO-v2)을
+picopulse가 자체 학습한 한국어 음성인식 모델. Whisper large-v3-turbo 기반 파인튜닝을
 whisper.cpp ggml 포맷으로 변환 + q5_0 양자화한 것.
 
 - 크기: 574,041,195 bytes (≈574MB)
-- SHA256: `3ca01d7ca464b6be625e5abf291f555e2157d56d49a7797e41894a4ad5655010`
-- 평가셋 CER 3.08% / 2.30%
+- SHA256: `da6c9fe5e18f0752cff5828fb24375f50467a371aab9b4985a7a0c491c7c676d`
 
-## 출처 및 라이선스 (Attribution & Licenses)
+> 같은 릴리스의 `ggml-large-v3-turbo-ko-kspon-q5_0.bin`은 동일 모델의 구 파일명으로,
+> 구버전 앱(≤0.8.4) 호환을 위해 한시 유지됩니다.
 
-이 모델은 아래 구성요소의 파생물이며, 각 출처를 고지합니다.
+## 라이선스 (License)
+
+**picoV-KO 모델 가중치는 picopulse의 저작물입니다.**
+picoVoice 앱의 정상적인 사용(앱이 수행하는 자동 다운로드) 목적 외의
+**재배포, 타 제품·서비스 탑재, 상업적 이용을 금지합니다.**
+그 외 이용은 picopulse(picopulsekorea@gmail.com)와 별도 협의가 필요합니다.
+
+The picoV-KO model weights are proprietary to picopulse. Redistribution, use in
+other products or services, and commercial use outside the picoVoice app are
+prohibited without prior written permission.
+
+## 출처 고지 (Attribution)
 
 | 구성요소 | 저작자/출처 | 라이선스 |
 |---|---|---|
 | 베이스 모델 Whisper large-v3-turbo | OpenAI ([openai/whisper-large-v3-turbo](https://huggingface.co/openai/whisper-large-v3-turbo)) | MIT |
-| 파인튜닝 체크포인트 | o0dimplz0o ([Whisper-Large-v3-turbo-STT-Zeroth-KO-v2](https://huggingface.co/o0dimplz0o/Whisper-Large-v3-turbo-STT-Zeroth-KO-v2)) | 미선언 (아래 주석 참고) |
-| 학습 데이터셋 | o0dimplz0o ([Zeroth-STT-Korean](https://huggingface.co/datasets/o0dimplz0o/Zeroth-STT-Korean)) | Apache-2.0 |
-| 원본 말뭉치 Zeroth-Korean | Goodatlas/Kaldi Zeroth project (Lucas Jo, Wonkyum Lee) | CC-BY-4.0 |
-| 포맷 변환·양자화 도구 whisper.cpp | Georgi Gerganov | MIT |
+| 포맷 변환·양자화 도구 whisper.cpp | The ggml authors | MIT |
 
-> **파인튜닝 체크포인트 라이선스 주석**: 원저자가 모델카드에 라이선스를 명시하지
-> 않았습니다. 본 재배포는 (a) 베이스 가중치가 MIT, (b) 학습 데이터가 Apache-2.0 /
-> CC-BY-4.0로 상업적 이용·재배포가 허용된다는 점에 근거합니다. 원저자에게 명시적
-> 라이선스 부여를 요청 중입니다.
+본 모델은 과학기술정보통신부와 한국지능정보사회진흥원(NIA)의
+AI허브([aihub.or.kr](https://www.aihub.or.kr)) 데이터를 활용하여 개발되었습니다.
 
-CC-BY-4.0(Zeroth-Korean 말뭉치)에 따라 원 말뭉치 저작자에게 출처를 표기합니다.
+## 릴리스 구조
+
+- `v2` — 현행 STT 모델 (picoV-KO)
+- `app-vX.Y.Z` — picoVoice 앱 설치본
+- `updater` — 앱 자동 업데이트 매니페스트 (latest.json)
